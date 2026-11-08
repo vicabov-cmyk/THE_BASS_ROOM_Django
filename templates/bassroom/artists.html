@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Артисти — THE BASS ROOM{% endblock %}
+{% block content %}
+<section class="page-heading"><div class="container-xxl"><p class="section-overline">SOUND SELECTORS</p><h1>НАШІ <span>АРТИСТИ</span></h1><p class="page-intro">Люди за пультом, які створюють атмосферу THE BASS ROOM.</p></div></section>
+<section class="section-block container-xxl"><div class="row g-4">
+  <div class="col-lg-4 col-md-6"><article class="artist-card"><div class="artist-graphic graphic-a" aria-hidden="true"><span>DB</span><div class="artist-rings"></div></div><div class="artist-body"><span class="artist-kicker">HEADLINER / DNB</span><h2>DRKBYTE</h2><p>Сети з потужним басом та енергією танцполу.</p><a href="{% url 'bassroom:events' %}">ПОВ'ЯЗАНА ПОДІЯ ↗</a></div></article></div>
+  <div class="col-lg-4 col-md-6"><article class="artist-card"><div class="artist-graphic graphic-b" aria-hidden="true"><span>JX</span><div class="artist-rings"></div></div><div class="artist-body"><span class="artist-kicker">DJ / DNB</span><h2>JAMIX</h2><p>Ритм і драйв у лайнапі THE BASS ROOM.</p><a href="{% url 'bassroom:events' %}">ПОВ'ЯЗАНА ПОДІЯ ↗</a></div></article></div>
+  <div class="col-lg-4 col-md-6"><article class="artist-card"><div class="artist-graphic graphic-c" aria-hidden="true"><span>YE</span><div class="artist-rings"></div></div><div class="artist-body"><span class="artist-kicker">BASS SELECTOR</span><h2>YEVIE</h2><p>Басові історії, глибокий настрій і свіжий звук THE BASS ROOM</p><a href="{% url 'bassroom:events' %}">ПОВ'ЯЗАНА ПОДІЯ ↗</a></div></article></div>
+</div></section>
+{% endblock %}

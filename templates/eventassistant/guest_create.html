@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+
+          content="width=device-width, initial-scale=1">
+
+    <title>THE BASS ROOM | Реєстрація гостя</title>
+
+</head>
+
+<body style="background:#111;
+
+             color:white;
+
+             font-family:Arial,sans-serif;
+
+             padding:40px;">
+
+    <h1 style="color:#B6FF00;">
+
+        THE BASS ROOM
+
+    </h1>
+
+    <h2>Реєстрація нового гостя</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit"
+
+                style="background:#B6FF00;
+
+                       color:#111;
+
+                       padding:12px 24px;
+
+                       border:none;
+
+                       border-radius:8px;
+
+                       font-weight:bold;
+
+                       cursor:pointer;">
+
+            Зареєструвати гостя
+
+        </button>
+
+    </form>
+
+    <p style="margin-top:25px;">
+
+        <a href="{% url 'eventassistant_dashboard' %}"
+
+           style="color:#B6FF00;">
+
+            ← Назад до панелі
+
+        </a>
+
+    </p>
+
+</body>
+
+</html>

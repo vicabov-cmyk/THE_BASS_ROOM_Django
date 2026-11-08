@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Про нас — THE BASS ROOM{% endblock %}
+{% block content %}
+<section class="page-heading"><div class="container-xxl"><p class="section-overline">OUR PHILOSOPHY</p><h1>МИ — <span>THE BASS ROOM</span></h1><p class="page-intro">Нас об'єднує музика. Тримає разом — спільнота.</p></div></section>
+<section class="section-block container-xxl">
+  <div class="row g-5 align-items-start">
+    <div class="col-lg-7"><p class="section-overline">ЧОМУ МИ ТУТ</p><h2 class="statement">БАС — ЦЕ НЕ ТІЛЬКИ ЧАСТОТА. <span>ЦЕ ВІДЧУТТЯ.</span></h2><p class="body-copy">THE BASS ROOM — простір для drum & bass і людей, яким близька ця культура. Ми збираємося заради музики, руху, свободи бути собою та зустрічей із тими, хто на одній хвилі.</p><a class="btn btn-bass mt-3" href="{% url 'bassroom:contacts' %}">БУДЬ З НАМИ ↗</a></div>
+    <div class="col-lg-5"><div class="rules-card"><p class="section-overline">НАШІ ПРИНЦИПИ</p><ul class="principles"><li><span>01</span> Повага одне до одного</li><li><span>02</span> Любов до справжньої музики</li><li><span>03</span> Підтримка своєї сцени</li><li><span>04</span> Єдність на танцполі</li></ul></div></div>
+  </div>
+</section>
+<section class="section-block section-spotlight"><div class="container-xxl"><div class="row align-items-center g-4"><div class="col-lg-8"><p class="section-overline">JOIN THE FREQUENCY</p><h2>ТИ ТЕЖ <span class="lime">ЧАСТИНА ЦЬОГО.</span></h2><p>Слідкуй за анонсами, спілкуйся зі спільнотою та зустрінемось на наступній події.</p></div><div class="col-lg-4 text-lg-end"><a class="btn btn-outline-bass btn-lg" href="{% url 'bassroom:contacts' %}">НАШІ КОНТАКТИ ↗</a></div></div></div></section>
+{% endblock %}

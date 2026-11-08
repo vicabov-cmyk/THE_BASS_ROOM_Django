@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="uk" xmlns:display="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>THE BASS ROOM | Event Assistant</title>
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            padding: 30px;
+
+            background: #090909;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+        }
+
+        .label {
+
+            color: #B6FF00;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+        }
+
+        h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+        }
+
+        h1 span {
+
+            color: #B6FF00;
+
+        }
+
+        .subtitle {
+
+            color: #aaa;
+
+        }
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns: repeat(
+
+                auto-fit, minmax(180px, 1fr)
+
+            );
+
+            gap: 16px;
+
+            margin-top: 35px;
+
+        }
+
+        .card {
+
+            background: #191919;
+
+            border: 1px solid #333;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+        }
+
+        .number {
+
+            color: #B6FF00;
+
+            font-size: 36px;
+
+            font-weight: bold;
+
+        }
+
+        .card p {
+
+            color: #aaa;
+
+            margin-bottom: 0;
+
+        }
+
+        h2 {
+
+            margin-top: 45px;
+
+        }
+
+        .event {
+
+            background: #191919;
+
+            border-left: 4px solid #B6FF00;
+
+            border-radius: 8px;
+
+            padding: 20px;
+
+            margin-top: 15px;
+
+        }
+
+        .event h3 {
+
+            color: #B6FF00;
+
+        }
+
+        .demo {
+
+            margin-top: 35px;
+
+            color: #aaa;
+
+            font-size: 13px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<a href="{% url 'bassroom:home' %}"
+
+   style="color:#B6FF00; text-decoration:none; font-weight:bold;">
+
+    ← На головну
+
+</a>
+
+<div class="container">
+{% if user.is_staff%}
+    <a href="{% url 'event_create' %}"
+   style="display:inline-block;
+          background:#B6FF00;
+          color:#111;
+          padding:12px 20px;
+          border-radius:8px;
+          text-decoration:none;
+          font-weight:bold;
+          margin-bottom:25px;">
+    + Створити подію
+</a>
+    <a href="{% url 'guest_create' %}"
+
+       style="display:inline-block;
+
+          background:#B6FF00;
+
+          color:#111;
+
+          padding:12px 20px;
+
+          border-radius:8px;
+
+          text-decoration:none;
+
+          font-weight:bold;
+
+          margin-left:10px;
+
+          margin-bottom:25px;">
+    + Зареєструвати гостя
+
+</a>
+{% endif %}
+    <p class="label">EVENT MANAGEMENT / DEMO</p>
+
+    <h1>THE <span>BASS</span> ROOM</h1>
+
+    <p class="subtitle">
+
+        Event Assistant — панель керування подіями
+
+    </p>
+
+    <div class="stats">
+
+        <div class="card">
+
+            <div class="number">{{ total_guests }}</div>
+
+            <p>Зареєстровано гостей</p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="number">{{ total_tickets }}</div>
+
+            <p>Створено квитків</p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="number">{{ paid_tickets }}</div>
+
+            <p>Оплачено (демо)</p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="number">{{ checked_in }}</div>
+
+            <p>Check-in гостей</p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="number">{{ total_sales }} грн</div>
+
+            <p>Демо-виручка</p>
+
+        </div>
+
+    </div>
+
+    <h2>НАШІ ПОДІЇ</h2>
+
+    {% for event in events %}
+
+        <div class="event">
+
+            <h3>{{ event.title }}</h3>
+
+            <p>
+
+                Дата:
+
+                {{ event.date|date:"d.m.Y H:i"}}
+
+            </p>
+
+            <p>Кількість місць: {{ event.capacity }}</p>
+
+            <a href="{% url 'event_edit' event.pk %}"
+
+   style="display:inline-block;
+
+          background:#B6FF00;
+
+          color:#111;
+
+          padding:10px 18px;
+
+          border-radius:8px;
+
+          text-decoration:none;
+
+          font-weight:bold;
+
+          margin-top:10px;">
+
+    ✏️ Редагувати подію
+
+</a>
+            {% if user.is_staff %}
+
+<form method="post"
+
+      action="{% url 'event_delete' event.pk %}"
+
+      style="display:inline-block; margin-left:8px;"
+
+      onsubmit="return confirm('Точно видалити подію?');">
+
+    {% csrf_token %}
+
+    <button type="submit"
+
+            style="background:#b83b3b;
+
+                   color:white;
+
+                   padding:10px 18px;
+
+                   border:0;
+
+                   border-radius:8px;
+
+                   cursor:pointer;">
+
+        🗑 Видалити
+
+    </button>
+
+</form>
+
+{% endif %}
+        </div>
+
+    {% empty %}
+
+        <p class="subtitle">
+
+            Поки немає створених подій.
+
+        </p>
+
+    {% endfor %}
+
+    <p class="demo">
+
+        THE BASS ROOM © 2026 |
+
+        Навчальний проєкт — демонстраційний режим
+
+    </p>
+
+</div>
+
+</body>
+
+</html>

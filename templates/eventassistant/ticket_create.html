@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport» content=«width=device-width, initial-scale=1">
+
+    <title>THE BASS ROOM | Tickets</title>
+
+    <style>
+
+        body {
+
+            background: #080808;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            padding: 30px;
+
+        }
+
+        .container {
+
+            max-width: 550px;
+
+            margin: 50px auto;
+
+            padding: 30px;
+
+            background: #181818;
+
+            border-radius: 15px;
+
+        }
+
+        h1 { color: #B6FF00; }
+
+        input, select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            box-sizing: border-box;
+
+            border-radius: 6px;
+
+            margin-top: 5px;
+
+        }
+
+        button {
+
+            background: #B6FF00;
+
+            color: black;
+
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+        a { color: #B6FF00; }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>THE BASS ROOM</h1>
+
+        <h2>🎟️ Створення квитка</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+
+                Створити квиток
+
+            </button>
+
+        </form>
+
+        <p>
+
+            <a href="{% url 'eventassistant_dashboard' %}">
+
+                ← Повернутися до Dashboard
+
+            </a>
+
+        </p>
+
+    </div>
+
+</body>
+
+</html>

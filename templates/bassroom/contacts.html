@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Контакти — THE BASS ROOM{% endblock %}
+{% block content %}
+<section class="page-heading"><div class="container-xxl"><p class="section-overline">STAY CONNECTED</p><h1>БУДЬ <span>НА ЗВ'ЯЗКУ</span></h1><p class="page-intro">Усі новини, анонси та розмови зі своїми — в нашій спільноті.</p></div></section>
+<section class="section-block container-xxl"><div class="row g-4">
+  <div class="col-lg-7"><div class="contact-card contact-primary"><p class="section-overline">НАШ ОСНОВНИЙ КАНАЛ</p><div class="contact-symbol" aria-hidden="true">↗</div><h2>TELEGRAM</h2><p>Анонси вечірок, фото, відео й усе, що відбувається у THE BASS ROOM.</p><a class="btn btn-bass btn-lg" href="https://t.me/bassroom_official" target="_blank" rel="noopener noreferrer">@bassroom_official ↗</a></div></div>
+  <div class="col-lg-5"><div class="contact-card contact-secondary"><p class="section-overline">ПРО НАС</p><h2>МУЗИКА.<br>ЛЮДИ.<br>ЕНЕРГІЯ.</h2><p>Хочеш дізнатися більше про атмосферу THE BASS ROOM або переглянути попередню подію?</p><div class="d-flex flex-wrap gap-3 mt-4"><a class="btn btn-outline-bass" href="{% url 'bassroom:about' %}">ПРО НАС ↗</a><a class="btn btn-outline-bass" href="{% url 'bassroom:events' %}">ПОДІЇ ↗</a></div></div></div>
+</div></section>
+{% endblock %}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>{{ post.title }} | THE BASS ROOM</title>
+
+    <style>
+
+        body {
+
+            background: #0b0b0b;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            padding: 30px;
+
+        }
+
+        .article {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            background: #222;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+        }
+
+        h1, a {
+
+            color: #B6FF00;
+
+        }
+
+        .content {
+
+            line-height: 1.7;
+
+        }
+
+        .meta {
+
+            color: #aaa;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="article">
+
+        <h1>{{ post.title }}</h1>
+
+        <p class="meta">
+
+            Категорія: {{ post.category }} |
+
+            Автор:
+            <a href="{% url 'profile_detail' post.author.id %}">
+                {{ post.author.username }}
+</a>
+
+        </p>
+
+        <div class="content">
+
+            {{ post.content|linebreaks }}
+
+        </div>
+
+        <p>
+
+            Теги:
+
+            {% for tag in post.tags.all %}
+
+                #{{ tag.name }}
+
+            {% endfor %}
+
+        </p>
+        <section style="margin-top: 30px;">
+
+    <h2 style="color: #B6FF00;">Коментарі</h2>
+
+    {% for comment in post.comments.all %}
+
+        <div style="background: #333;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            border-radius: 10px;
+        ">
+
+            <strong style="color: #B6FF00;">
+
+                {{ comment.author.username }}
+
+            </strong>
+
+            <p>{{ comment.text|linebreaksbr }}</p>
+
+            <small style="color: #aaa;">
+
+                {{ comment.created_at|date:"d.m.Y H:i" }}
+
+            </small>
+
+        </div>
+
+    {% empty %}
+
+        <p>Коментарів поки немає.</p>
+
+    {% endfor %}
+
+</section>
+
+<section style="margin-top: 30px;">
+
+    <h3>Залишити коментар</h3>
+
+    {% if user.is_authenticated %}
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit"
+
+                    style="background: #B6FF00;
+
+                           color: black;
+
+                           padding: 12px 20px;
+
+                           border: none;
+
+                           border-radius: 8px;
+
+                           cursor: pointer;">
+
+                Опублікувати коментар
+
+            </button>
+
+        </form>
+
+    {% else %}
+
+        <p>
+
+            Щоб залишити коментар,
+
+            <a href="/admin/login/?next={{ request.path }}">
+
+                увійди в акаунт
+
+            </a>.
+
+        </p>
+
+    {% endif %}
+
+</section>
+        <a href='{% url "post_list" %}'>
+
+            ← Назад до блогу
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

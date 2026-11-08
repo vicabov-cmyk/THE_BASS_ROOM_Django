@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ author.username }} | THE BASS ROOM</title>
+
+    <style>
+
+        body {
+
+            margin: 0;
+
+            padding: 30px;
+
+            background: #090909;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+        .container {
+
+            max-width: 900px;
+
+            margin: auto;
+
+        }
+
+        .profile {
+
+            background: #222;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+        h1, h2 {
+
+            color: #B6FF00;
+
+        }
+
+        h1 {
+
+            font-size: 42px;
+
+        }
+
+        a {
+
+            color: #B6FF00;
+
+            text-decoration: none;
+
+        }
+
+        .post {
+
+            background: #1b1b1b;
+
+            padding: 20px;
+
+            margin-bottom: 15px;
+
+            border-radius: 12px;
+
+        }
+
+        .post p {
+
+            line-height: 1.6;
+
+        }
+
+        .back {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="profile">
+
+            <h1>{{ author.username }}</h1>
+
+            <p>Авторка THE BASS ROOM</p>
+
+            {% if author.username|lower == 'yevie' %}
+
+                <a href="https://www.instagram.com/yevie_bo/"
+
+                   target="_blank"
+
+                   rel="noopener noreferrer">
+
+                    Instagram: @yevie_bo
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+        <h2>Публікації авторки</h2>
+
+        {% for post in posts %}
+
+            <div class="post">
+
+                <h2>{{ post.title }}</h2>
+
+                <p>{{ post.content|truncatewords:25 }}</p>
+
+                <a href="{% url 'post_detail' post.id %}">
+
+                    Читати далі →
+
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p>Публікацій поки немає.</p>
+
+        {% endfor %}
+
+        <a class="back" href="{% url 'post_list' %}">
+
+            ← Назад до блогу
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

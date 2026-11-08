@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a08">
+  <meta name="description" content="THE BASS ROOM — музика, bass culture і спільнота. Drum & bass у Києві.">
+  <title>{% block title %}THE BASS ROOM{% endblock %}</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-bass" aria-label="Основна навігація">
+        <div class="container-xxl">
+          <a class="navbar-brand brand" href="{% url 'bassroom:home' %}" aria-label="THE BASS ROOM — головна">
+            <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span>THE <strong>BASS</strong> ROOM</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Відкрити меню">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+              <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'bassroom:home' %}">Головна</a></li>
+              <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'events' %}active{% endif %}" href="{% url 'bassroom:events' %}">Події</a></li>
+              <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'artists' %}active{% endif %}" href="{% url 'bassroom:artists' %}">Артисти</a></li>
+              <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'bassroom:about' %}">Про нас</a></li>
+              <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'bassroom:contacts' %}">Контакти</a></li>
+              <li class="nav-item ms-lg-3"><a class="btn btn-bass btn-sm" href="https://t.me/bassroom_official" target="_blank" rel="noopener noreferrer">НАШ TELEGRAM <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-xxl py-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+          <div class="footer-brand">THE <span>BASS</span> ROOM <small>© {% now "Y" %}</small></div>
+          <div class="footer-links d-flex flex-wrap gap-3">
+            <a href="{% url 'bassroom:events' %}">Події</a>
+            <a href="{% url 'bassroom:artists' %}">Артисти</a>
+            <a href="{% url 'bassroom:contacts' %}">Контакти</a>
+            <a href="https://t.me/bassroom_official" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+          </div>
+        </div>
+        <p class="footer-note mb-0 mt-3">BASS CULTURE • COMMUNITY • KYIV</p>
+      </div>
+    </footer>
+  </div>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/site.js' %}"></script>
+</body>
+</html>

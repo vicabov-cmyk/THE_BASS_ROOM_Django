@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>THE BASS ROOM | Blog</title>
+
+    <style>
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            background: #090909;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+        }
+
+        header {
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            border-bottom: 2px solid #B6FF00;
+
+        }
+
+        h1 {
+
+            color: #B6FF00;
+
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+        }
+
+        .subtitle {
+
+            color: #aaaaaa;
+
+        }
+
+        .container {
+
+            max-width: 950px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+
+        }
+
+        .post {
+
+            background: #171717;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid #333;
+
+            border-radius: 12px;
+
+        }
+
+        .post h2 {
+
+            color: #B6FF00;
+
+            margin-top: 0;
+
+        }
+
+        .post p {
+
+            line-height: 1.7;
+
+        }
+
+        .category {
+
+            color: #B6FF00;
+
+            font-weight: bold;
+
+        }
+
+        .tags {
+
+            color: #aaaaaa;
+
+            font-size: 14px;
+
+            margin-top: 15px;
+
+        }
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #888;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>THE BASS ROOM</h1>
+
+    <p class="subtitle">
+
+        DRUM & BASS • DJ CULTURE • UNDERGROUND
+
+    </p>
+
+</header>
+
+<main class="container">
+
+    {% for post in posts %}
+
+    <article class="post">
+
+        <h2>{{ post.title }}</h2>
+
+        <p class="category">
+
+            {{ post.category.name }}
+
+        </p>
+
+        <p>
+
+            {{ post.content|truncatewords:20 }}
+
+        </p>
+
+        <div class="tags">
+
+            Tags:
+
+            {% for tag in post.tags.all %}
+
+                #{{ tag.name }}
+
+            {% empty %}
+
+                Без тегів
+
+            {% endfor %}
+
+        </div>
+
+   <a href="{% url 'post_detail' post.id %}"
+
+   style="display: inline-block;
+
+          margin-top: 15px;
+
+          color: #B6FF00;
+
+          font-weight: bold;
+
+          text-decoration: none;">
+
+    Читати далі →
+
+</a>
+    </article>
+
+    {% empty %}
+
+    <p>Публікацій поки немає.</p>
+
+    {% endfor %}
+
+</main>
+
+<footer>
+
+    THE BASS ROOM © 2026
+
+</footer>
+
+</body>
+
+</html>

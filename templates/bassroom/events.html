@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Події — THE BASS ROOM{% endblock %}
+{% block content %}
+<section class="page-heading"><div class="container-xxl"><p class="section-overline">CALENDAR / ARCHIVE</p><h1>НАШІ <span>ПОДІЇ</span></h1><p class="page-intro">Історія вечорів, які ми прожили разом. Нові анонси з'являться в нашому Telegram.</p></div></section>
+<section class="section-block container-xxl">
+  <article class="event-panel row g-0 overflow-hidden">
+    <div class="col-md-5 event-poster">
+      <div class="poster-content"><span class="poster-kicker">KYIV / 2026</span><strong>THE<br>BASS<br>ROOM<span>.</span></strong><span class="poster-date">24 OCT // 17:00—23:00</span><small>OPEN DECKS + DNB</small></div>
+    </div>
+    <div class="col-md-7 event-description">
+      <span class="event-tag">АРХІВ ПОДІЙ</span>
+      <h2>THE BASS ROOM<br>24 ЖОВТНЯ</h2>
+      <p class="event-summary">Вечір drum & bass, Open Decks і зустріч нашої спільноти.</p>
+      <div class="event-facts"><div><span>ДАТА</span><strong>24.10.2026</strong></div><div><span>ЧАС</span><strong>17:00–23:00</strong></div><div><span>ЛАЙНАП</span><strong>Paul Breaks · Jamix · DrkByte</strong></div></div>
+      <a class="btn btn-bass mt-4" href="{% url 'bassroom:artists' %}">ПОЗНАЙОМИТИСЯ З АРТИСТАМИ ↗</a>
+    </div>
+  </article>
+  <div class="notice-bar mt-4"><span>●</span> Це минула подія, продаж квитків завершено. Наступні анонси — у <a href="https://t.me/bassroom_official" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div>
+</section>
+{% endblock %}
