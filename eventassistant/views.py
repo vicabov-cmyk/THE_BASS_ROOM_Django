@@ -110,7 +110,7 @@ def event_edit(request, pk):
 
     from django.shortcuts import get_object_or_404, render, redirect
 
-    from .models import Eventf
+    from .models import Event
 
     from .forms import EventForm
 
