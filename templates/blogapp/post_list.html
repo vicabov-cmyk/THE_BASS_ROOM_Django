@@ -141,6 +141,30 @@
 </header>
 
 <main class="container">
+    {% if messages %}
+
+       {% for message in messages %}
+
+           <div style="background:#171717;
+
+                       color:#B6FF00;
+
+                       padding:15px;
+
+                       margin-bottom:20px;
+
+                       border-radius:10px;
+
+                       text-align:center;">
+
+            {{ message }}
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
 
     {% for post in posts %}
 
@@ -175,8 +199,7 @@
             {% endfor %}
 
         </div>
-
-   <a href="{% url 'post_detail' post.id %}"
+        <a href="{% url 'blogapp:post_detail' post.id %}"
 
    style="display: inline-block;
 
@@ -199,6 +222,35 @@
 
     {% endfor %}
 
+<section style="background:#171717; padding:30px; margin-top:35px; border-radius:12px; text-align:center;">
+
+    <h2 style="color:#B6FF00;">Підписка на новини</h2>
+
+    <p>Отримуй новини та анонси THE BASS ROOM!</p>
+
+    <form method="post" action="{% url 'blogapp:subscribe' %}">
+
+        {% csrf_token %}
+
+        <input type="email" name="email"
+
+               placeholder="Введіть ваш email"
+
+               required
+
+               style="padding:12px; border-radius:8px;">
+
+        <button type="submit"
+
+                style="background:#B6FF00; color:black; padding:12px; border:0; border-radius:8px; cursor:pointer;">
+
+            Підписатися
+
+        </button>
+
+    </form>
+
+</section>
 </main>
 
 <footer>

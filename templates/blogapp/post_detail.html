@@ -69,7 +69,7 @@
             Категорія: {{ post.category }} |
 
             Автор:
-            <a href="{% url 'profile_detail' post.author.id %}">
+            <a href="{% url 'blogapp:profile_detail' post.author.id %}">
                 {{ post.author.username }}
 </a>
 
@@ -96,7 +96,7 @@
 
     <h2 style="color: #B6FF00;">Коментарі</h2>
 
-    {% for comment in post.comments.all %}
+    {% for comment in comments %}
 
         <div style="background: #333;
 
@@ -180,7 +180,7 @@
     {% endif %}
 
 </section>
-        <a href='{% url "post_list" %}'>
+        <a href='{% url "blogapp:post_list" %}'>
 
             ← Назад до блогу
 
