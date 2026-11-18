@@ -19,8 +19,8 @@ WAYFORPAY_SERVICE_URL = os.getenv(
 )
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'vikabo.pythonanywhere.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
